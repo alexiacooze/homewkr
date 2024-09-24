@@ -1,5 +1,6 @@
 import logo from "../../assets/icons/companyLogo.png";
 import React from "react";
+import AuthButtons from "../authButtons/authButtons";
 
 function Banner() {
   return (
@@ -10,15 +11,8 @@ function Banner() {
           <img src={logo} alt="Logo" className="w-15 h-6 mb-0 mt-0" />
         </div>
 
-        {/* Login and Sign Up on the right */}
-        <div className="flex space-x-4 text-black">
-          <button className="text-sm font-semibold  hover:text-gray-700">
-            Login
-          </button>
-          <button className="text-sm font-semibold px-4 py-1 border-2 border-red-300 text-black bg-white hover:text-gray-700 rounded">
-            Sign Up
-          </button>
-        </div>
+        {/* Login and Sign Up Auth */}
+       <AuthButtons />
       </div>
     </div>
   );
