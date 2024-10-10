@@ -1,13 +1,12 @@
-// src/firebase/auth.tsx
+// src/firebase/auth.ts
 import {
-  getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
   User,
 } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth } from "./firebase"; // Import from the single initialization file
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -23,10 +22,14 @@ export const signInWithGoogle = (navigate: (path: string) => void) => {
 };
 
 export const logout = (navigate: (path: string) => void) => {
-  return signOut(auth).then(() => {
-    // Redirect to landing page after logout
-    navigate("/");
-  });
+  return signOut(auth)
+    .then(() => {
+      // Redirect to landing page after logout
+      navigate("/");
+    })
+    .catch((error) => {
+      console.error("Error during logout:", error);
+    });
 };
 
 export const listenToAuthState = (callback: (user: User | null) => void) => {
